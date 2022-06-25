@@ -4,8 +4,8 @@ trigger:
   branches:
     include:
     - '*'
-    exclude:
-    - main
+    #exclude:
+    #- main
   paths:
     exclude:
     - README.md
@@ -24,6 +24,11 @@ resources:
   pipelines:
   - pipeline: Network  
     source: tfsubmodule-network
+    trigger:    
+      stages:
+      - Regression
+  - pipeline: 'Resource Group'  
+    source: tfmodule-resource_group
     trigger:    
       stages:
       - Regression
